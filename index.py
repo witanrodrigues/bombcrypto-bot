@@ -212,18 +212,18 @@ def scroll():
 
 
 def clickButtons():
-    buttons = positions(images['go-work'], threshold=ct['go_to_work_btn'])
+    buttons = positions(images['go-all'], threshold=ct['go_to_work_btn'])
     # print('buttons: {}'.format(len(buttons)))
     for (x, y, w, h) in buttons:
         moveToWithRandomness(x+(w/2),y+(h/2),1)
         pyautogui.click()
-        global hero_clicks
-        hero_clicks = hero_clicks + 1
+        #global hero_clicks
+        #hero_clicks = hero_clicks + 1
         #cv2.rectangle(sct_img, (x, y) , (x + w, y + h), (0,255,255),2)
-        if hero_clicks > 20:
-            logger('too many hero clicks, try to increase the go_to_work_btn threshold')
-            return
-    return len(buttons)
+        #if hero_clicks > 20:
+            #logger('too many hero clicks, try to increase the go_to_work_btn threshold')
+            #return
+    return 0
 
 def isHome(hero, buttons):
     y = hero[1]
@@ -446,8 +446,8 @@ def refreshHeroes():
 
         if buttonsClicked == 0:
             empty_scrolls_attempts = empty_scrolls_attempts - 1
-        scroll()
-        time.sleep(2)
+        #scroll()
+        #time.sleep(2)
     logger('💪 {} heroes sent to work'.format(hero_clicks))
     goToGame()
 
